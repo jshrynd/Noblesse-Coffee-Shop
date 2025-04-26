@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Noblesse Coffee Shop - 3D Style</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    html, body {
+      height: 100%;
+      background: linear-gradient(to bottom right, #5c3a1d, #8b5e3c); /* rich coffee gradient */
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+    }
+    body {
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+    }
+    section {
+      display: none;
+    }
+    section.active {
+      display: block;
+    }
+    .card {
+      background: #fff;
+      color: #333;
+      border-radius: 1rem;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.35);
+    }
+    .button-3d {
+      background: linear-gradient(to right, #d97706, #f59e0b);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 9999px;
+      font-weight: bold;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .button-3d:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 12px rgba(0,0,0,0.4);
+    }
+  </style>
+  <script>
+    function navigateTo(pageId) {
+      document.querySelectorAll('section').forEach(section => section.classList.remove('active'));
+      document.getElementById(pageId).classList.add('active');
+      document.getElementById('menuDropdown').classList.add('hidden');
+    }
+    function toggleMenu() {
+      const menu = document.getElementById('menuDropdown');
+      menu.classList.toggle('hidden');
+    }
+    window.onload = () => navigateTo('home');
+  </script>
+</head>
+
+<body>
+  <header class="bg-yellow-800 shadow-lg p-6 text-center rounded-b-3xl">
+    <h1 class="text-4xl font-extrabold tracking-wide">Noblesse Coffee Shop</h1>
+    <p class="text-lg mt-2 opacity-90">Savor the taste of elegance</p>
+  </header>
+
+  <nav class="bg-yellow-700 flex items-center justify-between p-4 rounded-b-2xl shadow-md relative">
+    <div class="absolute left-4">
+      <button onclick="toggleMenu()" class="flex items-center px-4 py-2 rounded-full button-3d">
+        <svg class="w-6 h-6 mr-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+        <span>Menu</span>
+      </button>
+      <div id="menuDropdown" class="absolute bg-yellow-600 text-white mt-2 rounded-xl shadow-lg p-3 space-y-2 z-10 hidden">
+  <button onclick="navigateTo('home')" class="button-3d w-full text-left">Home</button>
+  <button onclick="navigateTo('coffee')" class="button-3d w-full text-left">Coffee</button>
+  <button onclick="navigateTo('about')" class="button-3d w-full text-left">About Us</button>
+  <button onclick="navigateTo('login')" class="button-3d w-full text-left">Log In</button>
+  <button onclick="navigateTo('contact')" class="button-3d w-full text-left">Contact</button>
+  <button onclick="navigateTo('developer')" class="button-3d w-full text-left">Developer</button>
+</div>
+
+    </div>
+    <div class="mx-auto flex space-x-6">
+      <button onclick="navigateTo('home')" class="hover:underline font-semibold">Home</button>
+      <button onclick="navigateTo('coffee')" class="hover:underline font-semibold">Coffee</button>
+    </div>
+    <div class="absolute right-4">
+      <button onclick="navigateTo('login')" class="button-3d">Log In</button>
+    </div>
+  </nav>
+
+  <main class="flex-1 p-6">
+    <section id="home" class="active text-center space-y-6">
+      <h2 class="text-3xl font-bold">Welcome to Noblesse Coffee Shop</h2>
+      <p class="text-xl opacity-90">Discover our finest blends and cozy ambiance.</p>
+      <img src="images/Cozy Coffee Shop.jpg" alt="Cozy Coffee Shop" class="mx-auto mt-6 rounded-3xl shadow-2xl w-3/4">
+    </section>
+
+    <section id="coffee" class="text-center space-y-6">
+      <h2 class="text-3xl font-bold">Our Coffee Selection</h2>
+      <div class="grid md:grid-cols-3 gap-8 mt-6">
+  
+    <div class="card p-4">
+      <img src="images/cappuccino.jpg" alt="Cappuccino" class="rounded-xl mb-4 w-full h-48 object-cover">
+      <h3 class="text-xl font-bold">Cappuccino</h3>
+      <p class="opacity-80">Rich espresso with steamed milk and foam.</p>
+      <p class="text-yellow-700 font-bold mt-2">$1.39</p>
+    </div>
+
+    <div class="card p-4">
+      <img src="images/Espresso.jpg" alt="Espresso" class="rounded-xl mb-4 w-full h-48 object-cover">
+      <h3 class="text-xl font-bold">Espresso</h3>
+      <p class="opacity-80">Bold and rich, the perfect boost.</p>
+      <p class="text-yellow-700 font-bold mt-2">$1.59</p>
+    </div>
+
+    <div class="card p-4">
+      <img src="images/Creamy Latte.jpg" alt="Creamy Latte" class="rounded-xl mb-4 w-full h-48 object-cover">
+      <h3 class="text-xl font-bold">Creamy Latte</h3>
+      <p class="opacity-80">Smooth and creamy bliss in every sip.</p>
+      <p class="text-yellow-700 font-bold mt-2">$2.29</p>
+    </div>
+
+    <!-- New coffee items start here -->
+
+    <div class="card p-4">
+      <img src="images/Mocha.jpg" alt="Mocha" class="rounded-xl mb-4 w-full h-48 object-cover">
+      <h3 class="text-xl font-bold">Mocha</h3>
+      <p class="opacity-80">Chocolate, espresso, and steamed milk.</p>
+      <p class="text-yellow-700 font-bold mt-2">$2.49</p>
+    </div>
+
+    <div class="card p-4">
+      <img src="images/Americano.jpg" alt="Americano" class="rounded-xl mb-4 w-full h-48 object-cover">
+      <h3 class="text-xl font-bold">Americano</h3>
+      <p class="opacity-80">Espresso with hot water for a smooth sip.</p>
+      <p class="text-yellow-700 font-bold mt-2">$1.99</p>
+    </div>
+
+    <div class="card p-4">
+      <img src="images/Caramel Macchiato.jpg" alt="Caramel Macchiato" class="rounded-xl mb-4 w-full h-48 object-cover">
+      <h3 class="text-xl font-bold">Caramel Macchiato</h3>
+      <p class="opacity-80">Velvety milk with vanilla and caramel.</p>
+      <p class="text-yellow-700 font-bold mt-2">$2.79</p>
+    </div>
+
+    <div class="card p-4">
+      <img src="images/Flat White.jpg" alt="Flat White" class="rounded-xl mb-4 w-full h-48 object-cover">
+      <h3 class="text-xl font-bold">Flat White</h3>
+      <p class="opacity-80">Smooth microfoam over a rich espresso.</p>
+      <p class="text-yellow-700 font-bold mt-2">$2.19</p>
+    </div>
+
+    <div class="card p-4">
+      <img src="images/Cold Brew.jpg" alt="Cold Brew" class="rounded-xl mb-4 w-full h-48 object-cover">
+      <h3 class="text-xl font-bold">Cold Brew</h3>
+      <p class="opacity-80">Brewed cold for a mellow flavor kick.</p>
+      <p class="text-yellow-700 font-bold mt-2">$2.49</p>
+    </div>
+
+    <div class="card p-4">
+      <img src="images/Irish Coffee.jpg" alt="Irish Coffee" class="rounded-xl mb-4 w-full h-48 object-cover">
+      <h3 class="text-xl font-bold">Irish Coffee</h3>
+      <p class="opacity-80">Coffee with Irish whiskey and cream.</p>
+      <p class="text-yellow-700 font-bold mt-2">$3.99</p>
+    </div>
+
+    <div class="card p-4">
+      <img src="images/Vanilla latte.jpg" alt="Vanilla Latte" class="rounded-xl mb-4 w-full h-48
+      </div>
+    </section>
+
+    <section id="about" class="text-center space-y-6">
+      <div class="card p-4">
+  <img src="images/Vanilla latte.jpg" alt="Vanilla latte" class="rounded-xl mb-4 w-full h-48 object-cover">
+  <h3 class="text-xl font-bold">Vanilla Latte</h3>
+  <p class="opacity-80">Rich espresso with smooth vanilla essence and creamy steamed milk.</p>
+  <p class="text-yellow-700 font-bold mt-2">$4.25</p>
+</div>
+
+    </section>
+
+    <section id="login" class="text-center space-y-6">
+      <h2 class="text-3xl font-bold">Log In</h2>
+      <form class="space-y-4 max-w-sm mx-auto">
+        <input type="text" placeholder="Username" class="p-3 rounded-lg text-black w-full shadow-inner">
+        <input type="password" placeholder="Password" class="p-3 rounded-lg text-black w-full shadow-inner">
+        <button type="button" class="button-3d w-full">Log In</button>
+      </form>
+      <p class="mt-4">Don't have an account? <a href="#" class="text-yellow-400 font-semibold hover:underline">Create Account</a></p>
+    </section>
+
+    <section id="contact" class="text-center space-y-6">
+      <h2 class="text-3xl font-bold">Contact Us</h2>
+      <p>Email: pradoeidanzkie@gmail.com | Phone: 09957902203</p>
+      <p>Location: 0957 J.P Rizal, Poblacion, Makati</p>
+      <br>
+      <p>Email: Reynadojoshua@gmail.com | Phone: 09670476053</p>
+      <p>Location: 231 R6 Pildera II Naia Pasay City</p>
+    </section>
+
+    <section id="developer" class="text-center space-y-6">
+      <h2 class="text-3xl font-bold">Developer</h2>
+      <p>Alvin John Prado - BSIT, Arellano University</p>
+	  <p>Contact: 09957902203</p>
+	  <p>Course: BS Information Technology</p>
+	  <p>School: Arellano University<p>
+	  <br>
+      <p>Joshua Reynado - BSIT, Arellano University</p>
+	  <p>Contact: 09670476053<p>
+	  <p>Course: BS Information Technology</p>
+	  <p>School: Arellano University<p>
+    </section>
+	
+  </main>
+
+  <footer class="bg-yellow-800 shadow-inner p-4 text-center rounded-t-3xl mt-6">
+    <p>&copy; Noblesse Coffee Shop. All rights reserved. | Submitted to Mr. Aqui Java</p>
+  </footer>
+</body>
+</html>
